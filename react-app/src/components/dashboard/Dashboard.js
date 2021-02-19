@@ -23,6 +23,7 @@ import '../../index.css'
 import Fridge from './stored-items/Fridge';
 import Freezer from './stored-items/Freezer';
 import Pantry from './stored-items/Pantry';
+import { JobChart } from './JobChart';
 
 
 function Copyright() {
@@ -204,7 +205,7 @@ export default function Dashboard() {
       return (groceryA.type.days_to_expiry -difference) - (groceryB.type.days_to_expiry - difference2)
     })
 
-    await setGroceries(sortedGroceries)
+    await setGroceries(response.groceries)
     await setFreezerGroceries(sortedFreezerGroceries)
     await setPantryGroceries(sortedPantryGroceries)
     setTimeout(function(){ setLoaded(true); }, 500);
@@ -266,18 +267,17 @@ const pieOptions= {
         <Container maxWidth="lg" className={classes.container}>
           {/* <RecipeSearchInput /> */}
           <Grid container spacing={3}>
-            {/* Chart */}
+          
             <Grid item xs={12} md={8} lg={9}>
-              {/* <Paper className={fixedHeightPaper}> */}
-                <Chart groceries={[...groceries, ...freezerGroceries, ...pantryGroceries]} setGroceries={setGroceries}
-                setFreezerGroceries={setFreezerGroceries} setPantryGroceries={setPantryGroceries}/>
-              {/* </Paper> */}
+              <Paper className={fixedHeightPaper}>
+              <JobChart groceries={groceries} />
+              </Paper>
             </Grid>
             
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
                 
-                <Deposits />
+                <Deposits groceries={groceries}/>
                 
               </Paper>
             </Grid>
@@ -288,7 +288,7 @@ const pieOptions= {
               <Button variant={screen==='fridge' ? 'contained':"outlined"} color="primary" 
                               onClick={async ()=> {
                               setScreen('fridge')
-                              }}>Fridge</Button>
+                              }}>Job Search</Button>
               <Button variant={screen==='freezer' ? 'contained':"outlined"}  color="primary" 
                               onClick={async ()=> {
                               setScreen('freezer')

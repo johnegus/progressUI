@@ -18,15 +18,17 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Deposits() {
+export default function Deposits({groceries}) {
   const classes = useStyles();
   const [user, setUser] = useState({})
   const year = new Date().getFullYear();
   const month =new Date().getMonth() + 1;
   const date = new Date().getDate()
   const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [accumulation, setAccumulation] = useState(0)
+  const [applications, setApplications] = useState(0)
 
-
+ 
     
     useEffect(() => {
        let user = localStorage.getItem('userId');
@@ -41,6 +43,27 @@ export default function Deposits() {
 
       setModalIsOpen(true)   
     }
+
+    console.log(groceries)
+   
+    useEffect(() => {
+      if(groceries){
+        const deposits = (groceries.reduce(function (accumulator, instance){
+          let unique = [...new Set(instance.type.type)];
+          console.log(unique);
+          return accumulator +  parseFloat(instance.type.days_to_expiry * instance.hours_multiplier);
+        }, 0)).toFixed(2);
+        let applicationNum = 0
+        for(let i = 0; i < groceries.length; ++i){
+          if(groceries[i].grocery_types_id === 13)
+          applicationNum++;
+      }
+      
+      
+        setAccumulation(parseFloat(deposits))
+        setApplications(applicationNum)
+      }
+    }, [groceries]);
   return (
     <React.Fragment>
       <div className='miniProfile' onClick={() => handleClick(user)}>
@@ -52,6 +75,15 @@ export default function Deposits() {
             <h2 id={user.id} onClick={handleClick}>{user.first_name} {user.last_name}</h2>
             <Typography color="textSecondary" className={classes.depositContext}>
             Today is {month + '/' + date + '/' + year}
+            
+            </Typography>
+            <Typography color="textSecondary" className={classes.depositContext}>
+            
+            Total Weekly Points: <b>{accumulation}</b>
+            </Typography>
+            <Typography color="textSecondary" className={classes.depositContext}>
+            
+            Total Jobs Applied: <b>{applications}</b>
             </Typography>
         </div>
         <Modal 

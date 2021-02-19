@@ -56,7 +56,7 @@ export default function Fridge({groceries, setGroceries}) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {groceries.map((grocery) => (
+          {groceries.slice(0).reverse().map((grocery) => (
             <TableRow key={grocery.id}>
               <TableCell>{grocery.createdAt}</TableCell>
               <TableCell>{grocery.hours_multiplier}</TableCell>

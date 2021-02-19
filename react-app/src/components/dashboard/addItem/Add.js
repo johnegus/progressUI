@@ -44,7 +44,7 @@ export default function AddGrocery({groceries, setGroceries}) {
   const onAddGrocery = async (e) => {  
       e.preventDefault()  
       if (!itemType ){
-        setErrors('Please set an item type.')
+        setErrors('Please set an activity type.')
         setTimeout(function()
            {
              setErrors('')
@@ -52,18 +52,17 @@ export default function AddGrocery({groceries, setGroceries}) {
       } 
       else{
       const newGrocery = await addGrocery(user, itemName, itemType.id, hours);
-      const sortedGroceries = [...groceries, newGrocery].sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
+      // const sortedGroceries = [...groceries, newGrocery].sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
 
-      setGroceries(sortedGroceries)
+      setGroceries([...groceries, newGrocery])
       setItemName('')
       setErrors('')
       setHours(1)
-      setSuccess('Item added to fridge.')
+      setSuccess('Activity added to tally.')
         setTimeout(function()
            {
             setSuccess('')
            },4000);
-      setItemType(null)
     }
     
     }
