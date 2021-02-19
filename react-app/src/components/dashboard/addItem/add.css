@@ -1,0 +1,77 @@
+.addForm {
+    display: flex;
+    padding: 20px;
+    z-index: -5;
+    
+}
+
+.addForm img {
+    height: 100px;
+    display: block;
+        left: 0;
+        position: relative;
+        top: -2%;
+        z-index: 1;
+}
+
+@media only screen and (max-width: 720px) {
+    .addForm {
+        display: grid;
+        width: 100%;
+    
+    }
+  }
+
+
+  .fade-out {
+    animation: fadeOut ease 4s;
+    -webkit-animation: fadeOut ease 4s;
+    -moz-animation: fadeOut ease 4s;
+    -o-animation: fadeOut ease 4s;
+    -ms-animation: fadeOut ease 4s;
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-moz-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-webkit-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-o-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-ms-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+  }
+}
