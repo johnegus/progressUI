@@ -62,7 +62,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
     <>
     <Nav>
       <NavContainer>
-      {authenticated ? <RecipeSearchInput /> : ''}
+      {/* {authenticated ? <RecipeSearchInput /> : ''} */}
       {authenticated ? <NavLink to="/dashboard" exact={true} activeClassName="active">
           <Logo />
         </NavLink> : 
