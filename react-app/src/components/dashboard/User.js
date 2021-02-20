@@ -11,7 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
-import fridgeIcon from './fridge.png'
+import fridgeIcon from './cropProgress.png'
 
 import { getFreezerTypes, getPantryTypes, getTypes } from '../../services/types';
 import { GridMaker } from './data-grid/Grid';
@@ -175,10 +175,10 @@ export default function User() {
       <>
     
     <main className="centered middled">
-      <img className='icon-progress' height='75px' width='150px' src={fridgeIcon} alt='fridgeIcon' />
+      <img className='icon-progress' height='150px' width='150px' src={fridgeIcon} alt='fridgeIcon' />
         <b>Loading Database...</b>
         
-        <div className='circle-progress'> <CircularProgress size='100px' color='secondary'/> </div>
+        {/* <div className='circle-progress'> <CircularProgress size='100px' color='secondary'/> </div> */}
         </main>
       </>
       )

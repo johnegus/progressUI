@@ -44,13 +44,11 @@ export default function Deposits({groceries}) {
       setModalIsOpen(true)   
     }
 
-    console.log(groceries)
    
     useEffect(() => {
       if(groceries){
         const deposits = (groceries.reduce(function (accumulator, instance){
-          let unique = [...new Set(instance.type.type)];
-          console.log(unique);
+    
           return accumulator +  parseFloat(instance.type.days_to_expiry * instance.hours_multiplier);
         }, 0)).toFixed(2);
         let applicationNum = 0
