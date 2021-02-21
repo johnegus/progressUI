@@ -13,9 +13,7 @@
     justify-content: center;
     margin: 0px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background: url('https://i.imgur.com/B2Iyywy.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
+    background-color: black;
     
   }
 
@@ -26,12 +24,11 @@ body.background__home {
 }
 
 .header{
-    background-color: #31e89f;
+    background-color: #4c96d7;
     width: 100%;
     text-align: center;
     height: 170px;
     padding: 30px ;
-    opacity: .8;
     font-weight: bolder;
   }
   
@@ -52,7 +49,6 @@ body.background__home {
     justify-content: center;
     background-color:#f6f6f6;
     font-size: large;
-    opacity: .8;
     padding: 20px;
     
   }
@@ -88,8 +84,7 @@ body.background__home {
     padding-top: 30px;
     display: flex;
     justify-content: space-between;
-    width:60%;
-    opacity: .95;
+    width: 90%;
     
   }
   .div-title{
@@ -131,7 +126,7 @@ body.background__home {
     margin-top: 15px;
     height: 40px;
     border: 0;
-    background-color: #31c6e8;
+    background-color: #4c96d7;
   }
   
   @media only screen and (min-width:320px) and (max-width:725px){

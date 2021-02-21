@@ -142,8 +142,8 @@ export const JobChart = ({groceries, screen})=> {
 
 const pieOptions= {
   legend: {
-    display: false,
-    position: "center"
+    display: true,
+    position: "right"
   },
  responsive: true,
 }
@@ -163,7 +163,9 @@ const pieOptions= {
           }}
         />
 :
+
 <Doughnut data={doughnutData} options={pieOptions} />
+
 }
       </div>
           </div>

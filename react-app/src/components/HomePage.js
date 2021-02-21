@@ -7,30 +7,8 @@ import github from '../github.png'
 import linkedin from '../linkedin.png'
 import '../index.css'
 
-import fridge from '../ECOFridge-crop.png'
-// const Header = styled.div`
-// font-size: 35px;
-// display: flex;
-// align-items: center;
-// justify-content: center;
-// margin-top: 15px;
-// position: relative;
-// font-family: 'Fugaz One', cursive;
-// z-index: 10;
-// `
+import fridge from '../dashboard.png'
 
-// const BackgroundImage = styled.div`
-// overflow: hidden;
-// background-image: url('https://i.imgur.com/B2Iyywy.jpg');
-// width: 100vw;
-// height: 91vh;
-// background-size: cover;
-// display: flex;
-// align-items: center;
-// justify-content: center;
-// z-index: -10;
-// position: absolute;
-// `
 const HomePage = ({ authenticated, setAuthenticated }) => {
     if (authenticated) {
         return <Redirect to="/dashboard" />;
@@ -41,20 +19,16 @@ const HomePage = ({ authenticated, setAuthenticated }) => {
             <Header/>
             <Card 
                 className='section bg-grey'
-                img='https://i.imgur.com/iYGDIsu.jpeg'
-                title='ECOFridge Goal'
-                description='Food waste prevention is one of the most important
-                issues to tackle when it comes sustainability.  Food waste is the single largest component of 
-                solid waste reaching landfills and incinerators in the U.S., according to the EPA.
-                ECOFridge sources its expiration 
-                data from the University of Nebraska–Lincoln to help people to optimize their kitchen, save money, and help the environment. '
+                img='https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
+                title='Progress UI Goal'
+                description='Progress UI is an app that organizes your job search. It is based on the App Academy job search points system that categorizes and prioritizes different activities. Users should try to accumulate at least 40 points per week with 10 of those total points from job applications.'
             />
 
             <Card 
                 className='section'
                 img={fridge}
-                title='About ECOFridge' 
-                description='How often have you forgotten you had frozen fish, cornstarch, or oatmeal and not realized until it was too late? ECOFridge is a sustainability minded dashboard for users to reduce wasted grocery items. ECOFridge organizes and visually prioritizes items that will parish first in the user’s refrigerator, freezer, or pantry, and help users to make informed decisions when creating a grocery list to utilizes items that could otherwise be wasted. '
+                title='Why?' 
+                description="I'm working on this project to help myself and others schedule our job search better. I also really enjoy simplfying data into friendly UI, so this is a fun project to practice."
             />
             
             
@@ -74,7 +48,7 @@ const Header = () =>{
     return(
         <div className='header'>
             <span className='header-title'>
-                ECOFridge
+                Progress UI
             </span>
             <br/>
        

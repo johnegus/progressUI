@@ -133,17 +133,13 @@ body {
 
   .doughnut {
     height: 20px;
-    position: relative;
-    left: 250px;
-    /* border: #31c6e8 solid 2px; */
+    width: 100%;
+    /* position: relative; */
+    
+    border: #31c6e8 solid 2px;
   }
 
-  @media screen and (max-width: 750px) {
-    .doughnut, .dashboard-button{
-      display: none;
-    }
 
-}
 
 
   /* ----------------------------------------------
@@ -210,4 +206,11 @@ body {
   color: blue;
   margin: 20px;
   font-weight: bold;
+}
+
+canvas{
+
+  width:100% !important;
+  height:100% !important;
+
 }
