@@ -52,7 +52,6 @@ export default function AddGrocery({groceries, setGroceries}) {
       } 
       else{
       const newGrocery = await addGrocery(user, itemName, itemType.id, hours);
-      // const sortedGroceries = [...groceries, newGrocery].sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
 
       setGroceries([...groceries, newGrocery])
       setItemName('')
@@ -70,6 +69,12 @@ export default function AddGrocery({groceries, setGroceries}) {
     const onUps = (e, newValue) => {
       
       setItemType(newValue);
+
+      if (itemType === 'Apply' || itemType === 'Email' || itemType === 'Email Outreach' || itemType === 'Get Reference' || itemType === 'LinkedIn Connection Request' ||
+      itemType === 'Phone Screen' || itemType === 'Phone Interview'|| itemType === 'Phone Call' || itemType === 'Networking Event'
+      || itemType === 'Technical Interview' || itemType === 'Coding Challenge' || itemType === 'On-Site Interview'){
+        setHours(1)
+      }
     }
 
 

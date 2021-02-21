@@ -14,14 +14,13 @@ import { Doughnut } from 'react-chartjs-2';
 import Deposits from './Deposits';
 import Button from '@material-ui/core/Button';
 
-import { getFreezerGroceries, getGroceries, getPantryGroceries } from '../../services/groceries';
+import {  getGroceries } from '../../services/groceries';
 import fridgeIcon from './cropProgress.png'
 import github from '../../github.png'
 import linkedin from '../../linkedin.png'
 import '../../index.css'
 import Fridge from './stored-items/Fridge';
-import Freezer from './stored-items/Freezer';
-import Pantry from './stored-items/Pantry';
+
 import { JobChart } from './JobChart';
 
 
@@ -137,7 +136,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   fixedHeight: {
-    height: 240,
+    height: 300,
   },
 }));
 
@@ -146,8 +145,6 @@ export default function Dashboard() {
   const [loaded, setLoaded] = useState(false);
   const userId = localStorage.getItem('userId') 
   const [groceries, setGroceries] = useState([]);
-  const [freezerGroceries, setFreezerGroceries] = useState([]);
-  const [pantryGroceries, setPantryGroceries] = useState([]);
   const [screen, setScreen] = useState('fridge')
  
 
@@ -158,90 +155,16 @@ export default function Dashboard() {
   useEffect(() => {
     
     (async () => {
-      const _MS_PER_DAY = 1000 * 60 * 60 * 24;
-
-  // a and b are javascript Date objects
-  function dateDiffInDays(a, b) {
-    // Discard the time and time-zone information.
-    const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
-    const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
-    return Math.floor((utc2 - utc1) / _MS_PER_DAY);
-  }
+ 
     const response = await getGroceries(userId)
-    const freezerResponse = await getFreezerGroceries(userId)
-    const pantryResponse = await getPantryGroceries(userId)
-   
-    const sortedGroceries = response.groceries.sort((groceryA, groceryB) => {
-      const a = new Date(groceryA.createdAt),
-      b = new Date(),
-      difference = dateDiffInDays(a, b);
-      const c = new Date(groceryB.createdAt),
-      d = new Date(),
-      difference2 = dateDiffInDays(c, d);
-
-      return (groceryA.type.days_to_expiry -difference) - (groceryB.type.days_to_expiry - difference2)
-    })
-
-    const sortedFreezerGroceries = freezerResponse.groceries.sort((groceryA, groceryB) => {
-      const a = new Date(groceryA.createdAt),
-      b = new Date(),
-      difference = dateDiffInDays(a, b);
-      const c = new Date(groceryB.createdAt),
-      d = new Date(),
-      difference2 = dateDiffInDays(c, d);
-
-      return (groceryA.type.days_to_expiry -difference) - (groceryB.type.days_to_expiry - difference2)
-    })
-
-    const sortedPantryGroceries = pantryResponse.groceries.sort((groceryA, groceryB) => {
-      const a = new Date(groceryA.createdAt),
-      b = new Date(),
-      difference = dateDiffInDays(a, b);
-      const c = new Date(groceryB.createdAt),
-      d = new Date(),
-      difference2 = dateDiffInDays(c, d);
-
-      return (groceryA.type.days_to_expiry -difference) - (groceryB.type.days_to_expiry - difference2)
-    })
 
     await setGroceries(response.groceries)
-    await setFreezerGroceries(sortedFreezerGroceries)
-    await setPantryGroceries(sortedPantryGroceries)
+   
     setTimeout(function(){ setLoaded(true); }, 500);
     
   })()
   }, [])
 
-  const doughnutData = {
-    datasets: [{
-        data: [groceries.length, freezerGroceries.length, pantryGroceries.length],
-        
-        backgroundColor: [
-          '#31e89f', '#31c6e8', 'lightcoral'
-        ],
-        borderColor: [
-          '#31e89f', '#31c6e8', 'lightcoral'
-        ],
-        borderWidth: 5,
-    }],
-    
-
-    // These labels appear in the legend and in the tooltips when hovering different arcs
-    labels: [
-        'Fridge',
-        'Freezer',
-        'Pantry'
-    ],
-    
-};
-
-const pieOptions= {
-  legend: {
-    display: false,
-    position: "right"
-  },
- responsive: true,
-}
   if (!loaded ) {
     return (
      
@@ -269,7 +192,7 @@ const pieOptions= {
           
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
-              <JobChart groceries={groceries} />
+              <JobChart groceries={groceries} screen={screen}/>
               </Paper>
             </Grid>
             
@@ -287,24 +210,20 @@ const pieOptions= {
               <Button variant={screen==='fridge' ? 'contained':"outlined"} color="primary" 
                               onClick={async ()=> {
                               setScreen('fridge')
-                              }}>Job Search</Button>
+                              }}>Bar Chart</Button>
               <Button variant={screen==='freezer' ? 'contained':"outlined"}  color="primary" 
                               onClick={async ()=> {
                               setScreen('freezer')
-                              }}>Freezer</Button>
-              <Button variant={screen==='pantry' ? 'contained':"outlined"}  color="primary" 
+                              }}>Pie Chart</Button>
+              {/* <Button variant={screen==='pantry' ? 'contained':"outlined"}  color="primary" 
                               onClick={async ()=> {
                               setScreen('pantry')
-                              }}>Pantry</Button>
-                   <div className='doughnut'>
-                  {/* <Doughnut data={doughnutData} options={pieOptions} /> */}
-                  </div>
+                              }}>Coming Soon</Button> */}
+                  
                   </div>
                 
-                  { screen === 'fridge' ? <Fridge groceries={groceries} setGroceries={setGroceries}/> :
-                  screen === 'freezer' ? <Freezer groceries={freezerGroceries} setGroceries={setFreezerGroceries}/> :
-                <Pantry groceries={pantryGroceries} setGroceries={setPantryGroceries}/>
-                  }
+                  <Fridge groceries={groceries} setGroceries={setGroceries}/> 
+                  
               </Paper>
             </Grid>
             

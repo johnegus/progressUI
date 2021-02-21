@@ -16,7 +16,7 @@ export default function ChartDataBase({types}) {
   useEffect(() => {
     (async () => {
         let stockChartXValuesFunction = [];
-    let stockChartYValuesFunction = [];
+        let stockChartYValuesFunction = [];
   if (types) {
     
 
@@ -36,7 +36,7 @@ export default function ChartDataBase({types}) {
     labels: stockChartXValues,
     datasets: [
       {
-        label: 'Days to Expiry',
+        label: 'Points per Activity',
         backgroundColor: 'salmon',
         borderColor: 'salmon',
         borderWidth: 1,

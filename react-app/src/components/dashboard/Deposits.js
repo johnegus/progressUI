@@ -77,11 +77,13 @@ export default function Deposits({groceries}) {
             </Typography>
             <Typography color="textSecondary" className={classes.depositContext}>
             
-            Total Weekly Points: <b>{accumulation}</b>
+            Total Weekly Points: <b className={`${accumulation >= 40
+                 ? "green" : "red"}`} >{accumulation}</b>
             </Typography>
             <Typography color="textSecondary" className={classes.depositContext}>
             
-            Total Jobs Applied: <b>{applications}</b>
+            Total Jobs Applied: <b className={`${applications >= 10
+                 ? "green" : "red"}`}>{applications}</b>
             </Typography>
         </div>
         <Modal 

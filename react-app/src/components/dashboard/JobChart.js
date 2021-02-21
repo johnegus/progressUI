@@ -4,8 +4,7 @@ import { Doughnut } from 'react-chartjs-2';
 
 
 
-export const JobChart = ({groceries})=> {
-    const userId = localStorage.getItem('userId')
+export const JobChart = ({groceries, screen})=> {
     const [stockChartXValues, setstockChartXValues] = useState([]);
     const [stockChartYValues, setstockChartYValues] = useState([]);
   
@@ -64,7 +63,7 @@ export const JobChart = ({groceries})=> {
       labels: stockChartXValues,
       datasets: [
         {
-          label: 'Days to Expiry',
+          label: 'Total Points',
           backgroundColor: 'salmon',
           borderColor: 'salmon',
           borderWidth: 1,
@@ -74,6 +73,24 @@ export const JobChart = ({groceries})=> {
         }
       ]
     };
+
+//     const arbitraryStackKey = "stack1";
+// const data = {
+//   labels: ['a', 'b', 'c', 'd', 'e'],
+//   datasets: [
+//     // These two will be in the same stack.
+//     {
+//       stack: arbitraryStackKey,
+//       label: 'data1',
+//       data: [1, 2, 3, 4, 5]
+//     },
+//     {
+//       stack: arbitraryStackKey,
+//       label: 'data2',
+//       data: [5, 4, 3, 2, 1]   
+//     }
+//   ]
+// }
   //   let stackedBar = new Chart(ctx, {
   //     type: 'bar',
   //     data: stockChartYValues,
@@ -94,8 +111,8 @@ export const JobChart = ({groceries})=> {
     datasets: [{
         data: stockChartYValues,
         
-        backgroundColor: ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', 
-        '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
+        backgroundColor: ['#a55fc1', '#d65ab1', '#74d14c', '#f2af58', '#4c96d7', 
+        '#ec4c4c', '#3366E6', '#999966', '#99FF99', '#B34D4D',
         '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A', 
         '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC',
         '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC', 
@@ -104,8 +121,8 @@ export const JobChart = ({groceries})=> {
         '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933',
         '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3', 
         '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'],
-        borderColor: ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', 
-        '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
+        borderColor: ['#a55fc1', '#d65ab1', '#74d14c', '#f2af58', '#4c96d7', 
+        '#ec4c4c', '#3366E6', '#999966', '#99FF99', '#B34D4D',
         '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A', 
         '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC',
         '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC', 
@@ -126,7 +143,7 @@ export const JobChart = ({groceries})=> {
 const pieOptions= {
   legend: {
     display: false,
-    position: "right"
+    position: "center"
   },
  responsive: true,
 }
@@ -135,7 +152,7 @@ const pieOptions= {
     <div className='data-bars'>
   
          <div>
-        {/* {stackedBar} */}
+      {screen === 'fridge'? 
         
         <Bar
           data={data}
@@ -145,9 +162,9 @@ const pieOptions= {
             maintainAspectRatio: false
           }}
         />
-
+:
 <Doughnut data={doughnutData} options={pieOptions} />
-
+}
       </div>
           </div>
         </>

@@ -152,18 +152,14 @@ export default function User() {
   const [loaded, setLoaded] = useState(false);
  
   const [types, setTypes] = useState([]);
-  const [freezerTypes, setFreezerTypes] = useState([]);
-  const [pantryTypes, setPantryTypes] = useState([]);
+ 
 
 
   useEffect(() => {
     (async () => {
     const response = await getTypes()
-    const freezerResponse = await getFreezerTypes()
-    const pantryResponse = await getPantryTypes()
+ 
     setTypes(response.types)
-    setFreezerTypes(freezerResponse.types)
-    setPantryTypes(pantryResponse.types)
     setTimeout(function(){ setLoaded(true); }, 500);
     
   })()
@@ -177,9 +173,7 @@ export default function User() {
     <main className="centered middled">
       <img className='icon-progress' height='150px' width='150px' src={fridgeIcon} alt='fridgeIcon' />
         <b>Loading Database...</b>
-        
-        {/* <div className='circle-progress'> <CircularProgress size='100px' color='secondary'/> </div> */}
-        </main>
+    </main>
       </>
       )
     }
@@ -192,31 +186,17 @@ export default function User() {
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               {/* <Paper className={fixedHeightPaper}> */}
-              <Title>Fridge</Title>
+              <Title>Activity Types</Title>
                 <ChartDataBase types={types}/>
-                <Title>Freezer</Title>
-                <ChartDataBase types={freezerTypes}/>
-                <Title>Pantry</Title>
-                <ChartDataBase types={pantryTypes}/>
+            
               {/* </Paper> */}
             </Grid>
-            {/* Recent Deposits */}
-            {/* <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                
-                <Deposits />
-                
-              </Paper>
-            </Grid> */}
-            {/* Recent Orders */}
+       
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-              <Title>Fridge</Title>
+              <Title>Activity Types</Title>
                 <GridMaker types={types} />
-              <Title>Freezer</Title>
-                <GridMaker types={freezerTypes} />
-              <Title>Pantry</Title>
-                <GridMaker types={pantryTypes} />
+            
                 
               </Paper>
             </Grid>

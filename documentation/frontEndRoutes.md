@@ -1,5 +1,5 @@
-# ECOFridge Frontend Routes
+# Progress UI Frontend Routes
 
-- /  => the user's 'fridge' or dashboard
-- /search => stretch goal search based on ingredients
-- /grocerylist => persistent grocery list to add items
+- /dashboard  => the user's 'fridge' or dashboard
+- /database => info on all the different activities and their points
+

@@ -1,4 +1,5 @@
-# ECOFridge Backend Routes
+# Progress UI Backend Routes
+//based on previous ecofridge project 
 
 - users
   - GET /users/:id/ => gets a single users info
@@ -15,5 +16,5 @@
   - PUT /groceries/:id => updates a specific grocery item
   - DELETE /groceries/:id => deletes a grocery item
 - grocery_type
-  - GET /grocery-type/groceries/:id => gets the grocery type for a grocery item
-  - GET /grocery-type/ => gets all grocery types
+  - GET /type/groceries/:id => gets the grocery type for a grocery item
+  - GET /type/ => gets all grocery types

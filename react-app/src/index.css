@@ -199,3 +199,15 @@ body {
       transform: translateY(600px) rotateZ(90deg);
   }
 }
+
+.green {
+  color: green;
+  margin: 20px;
+  font-weight: bold;
+}
+
+.red{
+  color: blue;
+  margin: 20px;
+  font-weight: bold;
+}

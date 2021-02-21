@@ -1,16 +1,11 @@
 # ![ERD](/react-app/src/ecofridge.png)
 
 
-ECOFridge is a sustainability minded dashboard for users to reduce wasted grocery items. ECOFridge visually prioritizes items that will parish first in the user’s refrigerator or pantry, and help users to make informed decisions when creating a grocery list to utilizes items that could otherwise be wasted. 
+Progress UI is an app that organizes your job search.  It is based on the App Academy job search points system that categorizes and prioritizes different activities.  Users should try to accumulate at least 40 points per week with 10 of those total points from job applications.
 
 ## Pictures
 
-
-
-### User Dashboard
-![ERD](/documentation/dashboard.png)
-### Data
-![ERD](/documentation/data.png)
+Coming soon!
 
 ### Technologies Used
 
@@ -29,9 +24,6 @@ ECOFridge is a sustainability minded dashboard for users to reduce wasted grocer
 ### Documentation
 
 * [Feature List](/documentation/featureList.md)
-* [MVP](/documentation/MVP.md)
 * [Front End Routes](/documentation/frontEndRoutes.md)
 * [Back End Routes](/documentation/backEndRoutes.md)
-* [Early Wireframe Sketch](/documentation/wireframe.pdf)
-* [Schema](/documentation/schema.md)
-* [Schema Image](/documentation/schema-diagram2.png)
+

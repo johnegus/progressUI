@@ -33,7 +33,7 @@ export const GridMaker = ({types})=> {
     const columns = [
         { field: 'id', headerName: 'ID'},
         { field: 'type', headerName: 'Type', width: 700 },
-        { field: 'days_to_expiry', headerName: 'Expires', width: 200 },
+        { field: 'days_to_expiry', headerName: 'Points per Activity', width: 200 },
         
         
       ];
