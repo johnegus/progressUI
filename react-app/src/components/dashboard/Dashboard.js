@@ -13,8 +13,7 @@ import Link from '@material-ui/core/Link';
 import { Doughnut } from 'react-chartjs-2';
 import Deposits from './Deposits';
 import Button from '@material-ui/core/Button';
-import Chart from './Chart';
-import CircularProgress from '@material-ui/core/CircularProgress';
+
 import { getFreezerGroceries, getGroceries, getPantryGroceries } from '../../services/groceries';
 import fridgeIcon from './cropProgress.png'
 import github from '../../github.png'

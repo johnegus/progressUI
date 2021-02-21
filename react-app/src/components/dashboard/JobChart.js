@@ -12,47 +12,52 @@ export const JobChart = ({groceries})=> {
     useEffect(() => {
         if(groceries){
 
+        //   let result = groceries.reduce(function(acc, val){
+        //     var o = acc.filter(function(obj){
+        //       console.log(o)
+        //         return obj.type.type==val.type.type;
+        //     }).pop() || {name:val.type.type, value:0};
+            
+        //     o.value += val.value;
+        //     acc.push(o);
+        //     return acc;
+        // },[]);
+        
+        // console.log(result);
+    
+
+
+          let holder = {};
+
+          groceries.forEach(function(grocery){
+            if (grocery.type.type in holder){
+              holder[grocery.type.type] = holder[grocery.type.type] + grocery.type.days_to_expiry * grocery.hours_multiplier;
+            } else {
+              holder[grocery.type.type] = grocery.type.days_to_expiry * grocery.hours_multiplier
+            }
+
+
+          })
+
+          let obj2 = [];
+
+          for (let prop in holder) {
+            obj2.push({type: prop, value: holder[prop]});
+          }
+
+          console.log(obj2)
+
           let stockChartXValuesFunction = [];
           let stockChartYValuesFunction = [];
-          groceries.map((grocery) => {
-            stockChartXValuesFunction.push(grocery.type.type)
-            stockChartYValuesFunction.push(grocery.type.type, grocery.type.days_to_expiry * grocery.hours_multiplier)
-            return grocery;
+          obj2.map((activity) => {
+            stockChartXValuesFunction.push(activity.type)
+            stockChartYValuesFunction.push(activity.value.toFixed(1))
+            return activity;
         })
-        let unique = [...new Set(stockChartXValuesFunction)];
-        let newArray = []
-        let counter = 0;
-        console.log(unique)
-        console.log(stockChartYValuesFunction)
-
-        for (let i = 1; i < stockChartXValuesFunction.length; i++) {
-            const element1 = stockChartXValuesFunction[i];
-            
-            for (let ii = 0; ii < stockChartYValuesFunction.length+2; ii+=2) {
-                const element2 = stockChartYValuesFunction[ii];
-                if ( element1 === element2){
-                    counter += stockChartYValuesFunction[ii+1]
-                }
-                else{
-                  newArray.push(counter)
-                  counter = 0
-                }
-                
-
-            }
-        }
-        console.log(newArray)
-        let newNewArray = []
-        for(let i=0; i<newArray.length;i++ )
-        { 
-           if(newArray[i]!== 0)
-           newNewArray.push(newArray[i]); 
-         } 
-
-         console.log(newNewArray)
+     
         
-        setstockChartXValues(unique)
-        setstockChartYValues(newNewArray)
+        setstockChartXValues(stockChartXValuesFunction)
+        setstockChartYValues(stockChartYValuesFunction)
         }
       }, [groceries]);
     const data = {
@@ -83,6 +88,8 @@ export const JobChart = ({groceries})=> {
   //         }
   //     }
   // });
+
+  
   const doughnutData = {
     datasets: [{
         data: stockChartYValues,
