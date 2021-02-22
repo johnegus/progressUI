@@ -184,7 +184,7 @@ export default function User() {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
+            <Grid item xs={12} >
               {/* <Paper className={fixedHeightPaper}> */}
               <Title>Activity Types</Title>
                 <ChartDataBase types={types}/>
