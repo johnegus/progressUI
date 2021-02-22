@@ -68,4 +68,14 @@ def grocery(grocery_id):
     grocery = Grocery.query.filter(Grocery.id == grocery_id).first()
     db.session.delete(grocery)
     db.session.commit()
-    return {'message': 'Grocery was successfully deleted'}, 200
+    return {'message': 'Activity was successfully deleted'}, 200
+
+
+# DELETE all activities
+@grocery_routes.route('/user/<int:user>/delete', methods=['DELETE'])
+# @login_required
+def delete_all_groceries(user):
+    groceries = Grocery.query.filter(Grocery.user_id == user).delete()
+    # db.session.delete(groceries)
+    db.session.commit()
+    return {'message': 'All activities successfully deleted'}, 200

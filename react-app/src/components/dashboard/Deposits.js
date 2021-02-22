@@ -10,6 +10,8 @@ import profile from "./Profile.png"
 import './mini-profile.css'
 import { EditAvatar } from './edit/EditAvatar';
 import { DeleteUser } from './edit/DeleteUser';
+import { Button } from '@material-ui/core';
+import { deleteAll, getGroceries } from '../../services/groceries';
 
 
 const useStyles = makeStyles({
@@ -18,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Deposits({groceries}) {
+export default function Deposits({groceries, setGroceries}) {
   const classes = useStyles();
   const [user, setUser] = useState({})
   const year = new Date().getFullYear();
@@ -27,7 +29,6 @@ export default function Deposits({groceries}) {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [accumulation, setAccumulation] = useState(0)
   const [applications, setApplications] = useState(0)
-
  
     
     useEffect(() => {
@@ -61,7 +62,17 @@ export default function Deposits({groceries}) {
         setAccumulation(parseFloat(deposits))
         setApplications(applicationNum)
       }
+
+
     }, [groceries]);
+
+    const onAddGrocery = async (e) => {  
+      e.preventDefault() 
+      await deleteAll(user.id)
+      const response = await getGroceries(user.id)
+      setGroceries([])
+
+    }
   return (
     <React.Fragment>
       <div className='miniProfile' onClick={() => handleClick(user)}>
@@ -85,6 +96,9 @@ export default function Deposits({groceries}) {
             Total Jobs Applied: <b className={`${applications >= 10
                  ? "green" : "red"}`}>{applications}</b>
             </Typography>
+            
+            <Button >Reset Activities</Button>
+
         </div>
         <Modal 
           isOpen={modalIsOpen} 
@@ -119,6 +133,7 @@ export default function Deposits({groceries}) {
             <div className='deleteUser'>
             <DeleteUser user={user} />
             </div>
+            <Button onClick={onAddGrocery}>Delete All Activities</Button>
           </Modal>
     </React.Fragment>
   );

@@ -199,7 +199,7 @@ export default function Dashboard() {
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
                 
-                <Deposits groceries={groceries}/>
+                <Deposits groceries={groceries} setGroceries={setGroceries}/>
                 
               </Paper>
             </Grid>

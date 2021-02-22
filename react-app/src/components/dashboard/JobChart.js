@@ -202,7 +202,17 @@ const pieOptions= {
           height={500}
           options={{
             maintainAspectRatio: false
-          }}
+          }
+        //   {
+        //     scales: {
+        //       xAxes: [{
+        //         ticks: {
+        //           beginAtZero: true
+        //         }
+        //       }]
+        //     }
+        //   }
+        }
         />
 :
 

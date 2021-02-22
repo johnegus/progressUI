@@ -41,6 +41,16 @@ export const deleteGrocery = async (id) => {
   return await response.json();
 }
 
+export const deleteAll = async (user) => {
+  const response = await fetch(`/api/groceries/user/${user}/delete`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return await response.json();
+}
+
 export const editGrocery = async (grocery_id, item_name) => {
   const response = await fetch(`/api/groceries/edit/${grocery_id}`, {
     method: "PUT",

@@ -56,7 +56,7 @@ export default function Fridge({groceries, setGroceries}) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {groceries.slice(0).reverse().map((grocery) => (
+          {groceries.length > 0 ? groceries.slice(0).reverse().map((grocery) => (
             <TableRow key={grocery.id}>
               <TableCell>{grocery.createdAt}</TableCell>
               <TableCell>{grocery.hours_multiplier}</TableCell>
@@ -67,7 +67,7 @@ export default function Fridge({groceries, setGroceries}) {
               <TableCell>{grocery.type.days_to_expiry * grocery.hours_multiplier} </TableCell>
               <TableCell align="right"><DeleteGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} /></TableCell>
             </TableRow>
-          ))}
+          )): ''}
           
             
           
