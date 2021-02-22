@@ -116,37 +116,7 @@ export const JobChart = ({groceries, screen})=> {
       ]
     };
 
-//     const arbitraryStackKey = "stack1";
-// const data = {
-//   labels: ['a', 'b', 'c', 'd', 'e'],
-//   datasets: [
-//     // These two will be in the same stack.
-//     {
-//       stack: arbitraryStackKey,
-//       label: 'data1',
-//       data: [1, 2, 3, 4, 5]
-//     },
-//     {
-//       stack: arbitraryStackKey,
-//       label: 'data2',
-//       data: [5, 4, 3, 2, 1]   
-//     }
-//   ]
-// }
-  //   let stackedBar = new Chart(ctx, {
-  //     type: 'bar',
-  //     data: stockChartYValues,
-  //     options: {
-  //         scales: {
-  //             xAxes: [{
-  //                 stacked: true
-  //             }],
-  //             yAxes: [{
-  //                 stacked: true
-  //             }]
-  //         }
-  //     }
-  // });
+
 
   
   const doughnutData = {
@@ -198,20 +168,25 @@ const pieOptions= {
         
         <HorizontalBar
           data={data}
-          width={800}
-          height={500}
+          width={900}
+          height={250}
           options={{
-            maintainAspectRatio: false
+            maintainAspectRatio: true
+          },
+          {
+            scales: {
+              xAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            },
+            legend: {
+              display: false,
+              position: "right"
+            }
           }
-        //   {
-        //     scales: {
-        //       xAxes: [{
-        //         ticks: {
-        //           beginAtZero: true
-        //         }
-        //       }]
-        //     }
-        //   }
+          
         }
         />
 :

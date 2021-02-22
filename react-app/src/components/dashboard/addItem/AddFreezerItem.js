@@ -98,7 +98,7 @@ export default function AddFreezerGrocery({groceries, setGroceries}) {
         />
         <Button type="submit" variant="outlined" color="primary">Add Freezer Item</Button>
         {errors ? <Alert className='fade-out' severity="error">{errors}</Alert> : success ?
-         <Alert className='fade-out' severity="success">Item added to fridge.</Alert> :
+         <Alert className='fade-out' severity="success">Activity added.</Alert> :
          ''
          }
       </div>

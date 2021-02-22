@@ -120,7 +120,7 @@ export default function AddGrocery({groceries, setGroceries}) {
         />
         <Button type="submit" variant="outlined" color="primary">Add Activity</Button>
         {errors ? <Alert className='fade-out' severity="error">{errors}</Alert> : success ?
-         <Alert className='fade-out' severity="success">Item added to fridge.</Alert> :
+         <Alert className='fade-out' severity="success">Activity added.</Alert> :
          ''
          }
       </div>

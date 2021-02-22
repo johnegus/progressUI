@@ -93,8 +93,8 @@ body {
     z-index: -4;
     opacity: 0.4;
     
-    -webkit-animation: rotate-center 3s linear infinite forwards;
-    animation: rotate-center 3s linear infinite forwards;
+    -webkit-animation: rotate-center 0.3s linear infinite forwards;
+    animation: rotate-center 0.3s linear infinite forwards;
     
   }
 
@@ -210,7 +210,7 @@ body {
 
 canvas{
 
-  width:100% !important;
-  height:100% !important;
+  /* width:100% !important;
+  height:100% !important; */
 
 }
