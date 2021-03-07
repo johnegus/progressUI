@@ -154,8 +154,8 @@ export const JobChart = ({groceries, screen})=> {
 
 const pieOptions= {
   legend: {
-    display: true,
-    position: "right"
+    display: false,
+    position: "left"
   },
  responsive: true,
 }
