@@ -7,7 +7,7 @@ Progress UI is an app that organizes your job search.  It is based on the App Ac
 
 ## Video
 
-https://user-images.githubusercontent.com/64587785/112548215-33ca3980-8dff-11eb-8646-d111e7bcc302.mp4
+![ERD](https://user-images.githubusercontent.com/64587785/112548215-33ca3980-8dff-11eb-8646-d111e7bcc302.mp4)
 
 ## Pictures
 
