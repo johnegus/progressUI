@@ -1,8 +1,8 @@
-"""create simple person table
+"""refactored tables
 
-Revision ID: eef3d5ac2ed9
+Revision ID: ea419a24ccac
 Revises: 
-Create Date: 2021-03-26 05:38:55.494775
+Create Date: 2021-03-26 06:38:28.100038
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'eef3d5ac2ed9'
+revision = 'ea419a24ccac'
 down_revision = None
 branch_labels = None
 depends_on = None
