@@ -1,4 +1,4 @@
-# ![ERD](/react-app/src/ecofridge.png)
+# ![ERD](/react-app/src/progressui.png)
 
 
 Progress UI is an app that organizes your job search.  It is based on the App Academy job search points system that categorizes and prioritizes different activities.  Users should try to accumulate at least 40 points per week with 10 of those total points from job applications.

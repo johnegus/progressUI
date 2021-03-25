@@ -11,10 +11,10 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import { Doughnut } from 'react-chartjs-2';
-import Deposits from './Deposits';
+import UserBox from './UserBox';
 import Button from '@material-ui/core/Button';
 
-import {  getGroceries } from '../../services/groceries';
+import {  getactivities } from '../../services/activities';
 import fridgeIcon from './cropProgress.png'
 import github from '../../github.png'
 import linkedin from '../../linkedin.png'
@@ -144,7 +144,7 @@ export default function Dashboard() {
   const classes = useStyles();
   const [loaded, setLoaded] = useState(false);
   const userId = localStorage.getItem('userId') 
-  const [groceries, setGroceries] = useState([]);
+  const [activities, setactivities] = useState([]);
   const [screen, setScreen] = useState('fridge')
  
 
@@ -156,9 +156,9 @@ export default function Dashboard() {
     
     (async () => {
  
-    const response = await getGroceries(userId)
+    const response = await getactivities(userId)
 
-    await setGroceries(response.groceries)
+    await setactivities(response.activities)
    
     setTimeout(function(){ setLoaded(true); }, 500);
     
@@ -192,14 +192,14 @@ export default function Dashboard() {
           
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
-              <JobChart groceries={groceries} screen={screen}/>
+              <JobChart activities={activities} screen={screen}/>
               </Paper>
             </Grid>
             
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
                 
-                <Deposits groceries={groceries} setGroceries={setGroceries}/>
+                <UserBox activities={activities} setactivities={setactivities}/>
                 
               </Paper>
             </Grid>
@@ -222,7 +222,7 @@ export default function Dashboard() {
                   
                   </div>
                 
-                  <Fridge groceries={groceries} setGroceries={setGroceries}/> 
+                  <Fridge activities={activities} setactivities={setactivities}/> 
                   
               </Paper>
             </Grid>

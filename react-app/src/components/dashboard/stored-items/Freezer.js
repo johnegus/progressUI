@@ -9,8 +9,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Title from '../Title';
 import '../mini-profile.css'
 
-import { DeleteFreezerGrocery } from '../delete/FreezerDelete';
-import AddFreezerGrocery from '../addItem/AddFreezerItem';
+import { DeleteFreezerActivity } from '../delete/FreezerDelete';
+import AddFreezerActivity from '../addItem/AddFreezerItem';
 import { DateDiffInDays } from '../dateDiffer/DateDiffInDays';
 import { ExpireCountdown } from '../dateDiffer/ExpireCountdown';
 
@@ -19,7 +19,7 @@ import RecipeSearch from '../../recipe-search/RecipeSearch';
 import CloseIcon from '@material-ui/icons/Close';
 
 
-import { FreezerEditGrocery } from '../edit/FreezerEdit';
+import { FreezerEditActivity } from '../edit/FreezerEdit';
 
 
 
@@ -27,16 +27,16 @@ import { FreezerEditGrocery } from '../edit/FreezerEdit';
 
 
 
-export default function Freezer({groceries, setGroceries}) {
+export default function Freezer({activities, setactivities}) {
   const [modalIsOpen, setModalIsOpen] = useState(false)
-  const [currentGrocery, setCurrentGrocery] = useState('')
+  const [currentActivity, setCurrentActivity] = useState('')
   
 
 
 
   
-  const handleTypeClick = (grocery) => {
-    setCurrentGrocery(grocery.type.type);
+  const handleTypeClick = (activity) => {
+    setCurrentActivity(activity.type.type);
     setModalIsOpen(true)   
   }
 
@@ -48,7 +48,7 @@ export default function Freezer({groceries, setGroceries}) {
     <React.Fragment>
     <Title>Freezer</Title>
       
-      <AddFreezerGrocery groceries={groceries} setGroceries={setGroceries}/>
+      <AddFreezerActivity activities={activities} setactivities={setactivities}/>
       <div className='freezerBackground'>
       <Table size="small">
         <TableHead>
@@ -62,16 +62,16 @@ export default function Freezer({groceries, setGroceries}) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {groceries.map((grocery) => (
-            <TableRow key={grocery.id}>
-              <TableCell>{grocery.createdAt}</TableCell>
-              <TableCell><DateDiffInDays grocery={grocery} /></TableCell>
+          {activities.map((activity) => (
+            <TableRow key={activity.id}>
+              <TableCell>{activity.createdAt}</TableCell>
+              <TableCell><DateDiffInDays activity={activity} /></TableCell>
               <TableCell>
-                <FreezerEditGrocery grocery={grocery} groceries={groceries} setGroceries={setGroceries}/>
+                <FreezerEditActivity activity={activity} activities={activities} setactivities={setactivities}/>
               </TableCell>
-              <TableCell onClick={() => handleTypeClick(grocery)}>{grocery.type.type}</TableCell>
-              <TableCell><ExpireCountdown grocery={grocery} /> </TableCell>
-              <TableCell align="right"><DeleteFreezerGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} /></TableCell>
+              <TableCell onClick={() => handleTypeClick(activity)}>{activity.type.type}</TableCell>
+              <TableCell><ExpireCountdown activity={activity} /> </TableCell>
+              <TableCell align="right"><DeleteFreezerActivity activities={activities} activity={activity} setactivities={setactivities} /></TableCell>
             </TableRow>
           ))}
           
@@ -108,7 +108,7 @@ export default function Freezer({groceries, setGroceries}) {
             <div className='closeIcon'>
               <CloseIcon onClick={() => setModalIsOpen(false)}>Close</CloseIcon>
             </div>
-            <RecipeSearch currentGrocery={currentGrocery}/>
+            <RecipeSearch currentActivity={currentActivity}/>
             
           </Modal>
           

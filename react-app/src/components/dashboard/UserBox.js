@@ -11,7 +11,7 @@ import './mini-profile.css'
 import { EditAvatar } from './edit/EditAvatar';
 import { DeleteUser } from './edit/DeleteUser';
 import { Button } from '@material-ui/core';
-import { deleteAll, getGroceries } from '../../services/groceries';
+import { deleteAll, getactivities } from '../../services/activities';
 
 
 const useStyles = makeStyles({
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Deposits({groceries, setGroceries}) {
+export default function UserBox({activities, setactivities}) {
   const classes = useStyles();
   const [user, setUser] = useState({})
   const year = new Date().getFullYear();
@@ -40,21 +40,21 @@ export default function Deposits({groceries, setGroceries}) {
         })()
     }, [])
 
-    const handleClick = (grocery) => {
+    const handleClick = (activity) => {
 
       setModalIsOpen(true)   
     }
 
    
     useEffect(() => {
-      if(groceries){
-        const deposits = (groceries.reduce(function (accumulator, instance){
+      if(activities){
+        const deposits = (activities.reduce(function (accumulator, instance){
     
           return accumulator +  parseFloat(instance.type.days_to_expiry * instance.hours_multiplier);
         }, 0)).toFixed(2);
         let applicationNum = 0
-        for(let i = 0; i < groceries.length; ++i){
-          if(groceries[i].grocery_types_id === 13)
+        for(let i = 0; i < activities.length; ++i){
+          if(activities[i].activity_types_id === 13)
           applicationNum++;
       }
       
@@ -64,13 +64,13 @@ export default function Deposits({groceries, setGroceries}) {
       }
 
 
-    }, [groceries]);
+    }, [activities]);
 
-    const onAddGrocery = async (e) => {  
+    const onAddActivity = async (e) => {  
       e.preventDefault() 
       await deleteAll(user.id)
-      const response = await getGroceries(user.id)
-      setGroceries([])
+      const response = await getactivities(user.id)
+      setactivities([])
 
     }
   return (
@@ -133,7 +133,7 @@ export default function Deposits({groceries, setGroceries}) {
             <div className='deleteUser'>
             <DeleteUser user={user} />
             </div>
-            <Button onClick={onAddGrocery}>Delete All Activities</Button>
+            <Button onClick={onAddActivity}>Delete All Activities</Button>
           </Modal>
     </React.Fragment>
   );

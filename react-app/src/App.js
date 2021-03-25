@@ -5,12 +5,11 @@ import SignUp from "./components/sign-up/SignUp";
 import NavBar from "./components/NavBar";
 import Dashboard from './components/dashboard/Dashboard'
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import User from "./components/dashboard/User";
 import { authenticate } from "./services/auth";
 import HomePage from "./components/HomePage";
-import AddGrocery from "./components/dashboard/addItem/Add";
 import Modal from 'react-modal'
-import Recipe from "./components/recipe-search/Recipe";
+import Database from "./components/dashboard/Database";
+
 
 Modal.setAppElement('#root')
 
@@ -46,19 +45,11 @@ function App() {
       <Route path="/sign-up" exact={true}>
         <SignUp authenticated={authenticated} setAuthenticated={setAuthenticated} />
       </Route>
-      
-    
       <ProtectedRoute path="/dashboard" exact={true} authenticated={authenticated}>
         <Dashboard/>
       </ProtectedRoute>
-      <ProtectedRoute path="/recipes" exact={true} authenticated={authenticated}>
-        <Recipe />
-      </ProtectedRoute>
-      <ProtectedRoute path="/add" exact={true} authenticated={authenticated}>
-        <AddGrocery />
-      </ProtectedRoute>
       <ProtectedRoute path="/database" exact={true} authenticated={authenticated}>
-        <User />
+        <Database />
       </ProtectedRoute>
      
   

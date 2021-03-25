@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { addGrocery } from '../../../services/groceries';
+import { addActivity } from '../../../services/activities';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddGrocery({groceries, setGroceries}) {
+export default function AddActivity({activities, setactivities}) {
   const classes = useStyles();
   const [itemName, setItemName] = useState("");
   const [itemType, setItemType] = useState(null);
@@ -41,7 +41,7 @@ export default function AddGrocery({groceries, setGroceries}) {
   })()
   }, [])
 
-  const onAddGrocery = async (e) => {  
+  const onAddActivity = async (e) => {  
       e.preventDefault()  
       if (!itemType ){
         setErrors('Please set an activity type.')
@@ -51,9 +51,9 @@ export default function AddGrocery({groceries, setGroceries}) {
            },4000);
       } 
       else{
-      const newGrocery = await addGrocery(user, itemName, itemType.id, hours);
+      const newActivity = await addActivity(user, itemName, itemType.id, hours);
 
-      setGroceries([...groceries, newGrocery])
+      setactivities([...activities, newActivity])
       setItemName('')
       setErrors('')
       setHours(1)
@@ -79,7 +79,7 @@ export default function AddGrocery({groceries, setGroceries}) {
 
 
   return (
-    <form onSubmit={onAddGrocery} className={classes.root} noValidate autoComplete="off">
+    <form onSubmit={onAddActivity} className={classes.root} noValidate autoComplete="off">
       <div className='addForm'>
       
      

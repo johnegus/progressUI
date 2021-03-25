@@ -7,8 +7,7 @@ import styled from 'styled-components'
 import Button from '@material-ui/core/Button';
 
 
-import RecipeSearchInput from './recipe-search/RecipeSearchInput';
-import logo from '../ecofridge.png'
+import logo from '../progressui.png'
 import '../index.css'
 
 
@@ -62,7 +61,6 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
     <>
     <Nav>
       <NavContainer>
-      {/* {authenticated ? <RecipeSearchInput /> : ''} */}
       {authenticated ? <NavLink to="/dashboard" exact={true} activeClassName="active">
           <Logo />
         </NavLink> : 

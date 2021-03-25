@@ -4,14 +4,14 @@ import { Doughnut } from 'react-chartjs-2';
 
 
 
-export const JobChart = ({groceries, screen})=> {
+export const JobChart = ({activities, screen})=> {
     const [stockChartXValues, setstockChartXValues] = useState([]);
     const [stockChartYValues, setstockChartYValues] = useState([]);
   
     useEffect(() => {
-        if(groceries){
+        if(activities){
 
-        //   let result = groceries.reduce(function(acc, val){
+        //   let result = activities.reduce(function(acc, val){
         //     var o = acc.filter(function(obj){
         //       console.log(o)
         //         return obj.type.type==val.type.type;
@@ -28,11 +28,11 @@ export const JobChart = ({groceries, screen})=> {
 
           let holder = {};
 
-          groceries.forEach(function(grocery){
-            if (grocery.type.type in holder){
-              holder[grocery.type.type] = holder[grocery.type.type] + grocery.type.days_to_expiry * grocery.hours_multiplier;
+          activities.forEach(function(activity){
+            if (activity.type.type in holder){
+              holder[activity.type.type] = holder[activity.type.type] + activity.type.days_to_expiry * activity.hours_multiplier;
             } else {
-              holder[grocery.type.type] = grocery.type.days_to_expiry * grocery.hours_multiplier
+              holder[activity.type.type] = activity.type.days_to_expiry * activity.hours_multiplier
             }
 
 
@@ -58,7 +58,7 @@ export const JobChart = ({groceries, screen})=> {
         setstockChartXValues(stockChartXValuesFunction)
         setstockChartYValues(stockChartYValuesFunction)
         }
-      }, [groceries]);
+      }, [activities]);
     // const data = {
     //   labels: stockChartXValues,
     //   datasets: [

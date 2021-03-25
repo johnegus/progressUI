@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { editGrocery } from '../../../services/groceries';
+import { editActivity } from '../../../services/activities';
 import TextField from '@material-ui/core/TextField';
 import '../mini-profile.css'
 const useStyles = makeStyles((theme) => ({
@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export const EditGrocery = ({grocery, groceries, setGroceries})=> {
+export const EditActivity = ({activity, activities, setactivities})=> {
     const classes = useStyles();
     const [isEdit, setIsEdit] = useState(false)
     const [itemName, setItemName] = useState("");
@@ -25,11 +25,11 @@ export const EditGrocery = ({grocery, groceries, setGroceries})=> {
     
       const onEditSubmit = async (e) => {
         e.preventDefault()  
-        const newGrocery = await editGrocery(grocery.id, itemName);
-        const newGroceries = groceries.map(item => item.id === grocery.id ? newGrocery: item)
-        // const sortedGroceries = [...groceries, newGrocery].sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
+        const newActivity = await editActivity(activity.id, itemName);
+        const newactivities = activities.map(item => item.id === activity.id ? newActivity: item)
+        // const sortedactivities = [...activities, newActivity].sort((a, b) => a.type.days_to_expiry - b.type.days_to_expiry)
     
-        setGroceries(newGroceries)
+        setactivities(newactivities)
         setItemName('')
         setIsEdit(false)
       }
@@ -59,7 +59,7 @@ export const EditGrocery = ({grocery, groceries, setGroceries})=> {
                   
                 </div>
               
-                : grocery.item_name
+                : activity.item_name
                 
               }
               <div className='editform'>

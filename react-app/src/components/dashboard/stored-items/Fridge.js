@@ -8,29 +8,26 @@ import TableRow from '@material-ui/core/TableRow';
 import Title from '../Title';
 import '../mini-profile.css'
 
-import { DeleteGrocery } from '../delete/Delete';
-import AddGrocery from '../addItem/Add';
-import { DateDiffInDays } from '../dateDiffer/DateDiffInDays';
-import { ExpireCountdown } from '../dateDiffer/ExpireCountdown';
-
-import Modal from 'react-modal'
-import RecipeSearch from '../../recipe-search/RecipeSearch';
-import CloseIcon from '@material-ui/icons/Close';
+import { DeleteActivity } from '../delete/Delete';
+import AddActivity from '../addItem/Add';
 
 
-import { EditGrocery } from '../edit/Edit';
 
 
-export default function Fridge({groceries, setGroceries}) {
+
+import { EditActivity } from '../edit/Edit';
+
+
+export default function Fridge({activities, setactivities}) {
   const [modalIsOpen, setModalIsOpen] = useState(false)
-  const [currentGrocery, setCurrentGrocery] = useState('')
+  const [currentActivity, setCurrentActivity] = useState('')
   
 
 
 
   
-  const handleTypeClick = (grocery) => {
-    setCurrentGrocery(grocery.type.type);
+  const handleTypeClick = (activity) => {
+    setCurrentActivity(activity.type.type);
     setModalIsOpen(true)   
   }
 
@@ -42,7 +39,7 @@ export default function Fridge({groceries, setGroceries}) {
     <React.Fragment>
     <Title>Job Search Weekly Tally</Title>
       
-      <AddGrocery groceries={groceries} setGroceries={setGroceries}/>
+      <AddActivity activities={activities} setactivities={setactivities}/>
       <div className='fridgeBackground'>
       <Table size="small">
         <TableHead>
@@ -56,16 +53,16 @@ export default function Fridge({groceries, setGroceries}) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {groceries.length > 0 ? groceries.slice(0).reverse().map((grocery) => (
-            <TableRow key={grocery.id}>
-              <TableCell>{grocery.createdAt}</TableCell>
-              <TableCell>{grocery.hours_multiplier}</TableCell>
+          {activities.length > 0 ? activities.slice(0).reverse().map((activity) => (
+            <TableRow key={activity.id}>
+              <TableCell>{activity.createdAt}</TableCell>
+              <TableCell>{activity.hours_multiplier}</TableCell>
               <TableCell>
-                <EditGrocery grocery={grocery} groceries={groceries} setGroceries={setGroceries}/>
+                <EditActivity activity={activity} activities={activities} setactivities={setactivities}/>
               </TableCell>
-              <TableCell onClick={() => handleTypeClick(grocery)}>{grocery.type.type}</TableCell>
-              <TableCell>{grocery.type.days_to_expiry * grocery.hours_multiplier} </TableCell>
-              <TableCell align="right"><DeleteGrocery groceries={groceries} grocery={grocery} setGroceries={setGroceries} /></TableCell>
+              <TableCell onClick={() => handleTypeClick(activity)}>{activity.type.type}</TableCell>
+              <TableCell>{activity.type.days_to_expiry * activity.hours_multiplier} </TableCell>
+              <TableCell align="right"><DeleteActivity activities={activities} activity={activity} setactivities={setactivities} /></TableCell>
             </TableRow>
           )): ''}
           
@@ -75,36 +72,6 @@ export default function Fridge({groceries, setGroceries}) {
       </Table>
             
       </div>
-      
-      <Modal 
-          isOpen={modalIsOpen} 
-          onRequestClose={() => setModalIsOpen(false)}
-          closeTimeoutMS={500}
-          style={
-            {
-            content: {
-              background: 'linear-gradient(7deg, rgba(2,0,36,1) 0%, rgba(212,212,228,0.48921566917782733) 34%, rgba(0,212,255,1) 100%)', 
-              position: 'absolute',
-              top: '20%',
-              left: '1%',
-              right: '1%',
-              bottom: '5%',
-              border: '1px solid #ccc',
-              overflow: 'auto',
-              WebkitOverflowScrolling: 'touch',
-              borderRadius: '5px',
-              outline: 'none',
-              padding: '20px'
-            }
-          }
-          }
-          >
-            <div className='closeIcon'>
-              <CloseIcon onClick={() => setModalIsOpen(false)}>Close</CloseIcon>
-            </div>
-            <RecipeSearch currentGrocery={currentGrocery}/>
-            
-          </Modal>
           
     </React.Fragment>
   );

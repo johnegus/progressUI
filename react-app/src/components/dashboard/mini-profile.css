@@ -295,12 +295,12 @@
     border-radius: 5px;
 }
 
-.delete-grocery-button {
+.delete-activity-button {
     margin: 5px;
     display: block;
 }
 
-/* .delete-grocery-button:hover {
+/* .delete-activity-button:hover {
     margin: 5px;
 } */
 @media screen and (max-width: 750px) {

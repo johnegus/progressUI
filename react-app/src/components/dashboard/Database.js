@@ -9,11 +9,9 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
-
-import CircularProgress from '@material-ui/core/CircularProgress';
 import fridgeIcon from './cropProgress.png'
 
-import { getFreezerTypes, getPantryTypes, getTypes } from '../../services/types';
+import { getTypes } from '../../services/types';
 import { GridMaker } from './data-grid/Grid';
 import ChartDataBase from './ChartDataBase';
 import github from '../../github.png'
@@ -34,13 +32,7 @@ function Copyright() {
       {'.'}
       
     </Typography>
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Food Data from '}
-      <Link color="inherit" href="https://food.unl.edu/free-resource/food-storage">
-      The University of Nebraska–Lincoln
-      </Link>
-      
-    </Typography>
+
     <div className='miniInfo1'>
     <div>
     <a href="https://github.com/johnegus/" target="_blank" rel="noreferrer"> 
@@ -147,7 +139,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function User() {
+export default function Database() {
   const classes = useStyles();
   const [loaded, setLoaded] = useState(false);
  

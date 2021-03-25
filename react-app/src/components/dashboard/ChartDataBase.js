@@ -20,7 +20,7 @@ export default function ChartDataBase({types}) {
   if (types) {
     
 
-    const sortedTypes = types.sort((groceryA, groceryB) => groceryA.days_to_expiry - groceryB.days_to_expiry)
+    const sortedTypes = types.sort((activityA, activityB) => activityA.days_to_expiry - activityB.days_to_expiry)
     sortedTypes.map((type) => {
         stockChartXValuesFunction.push(type.type)
         stockChartYValuesFunction.push(type.days_to_expiry)

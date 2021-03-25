@@ -30,15 +30,6 @@ const HomePage = ({ authenticated, setAuthenticated }) => {
                 title='Why?' 
                 description="I'm working on this project to help myself and others schedule our job search better. I also really enjoy simplfying data into friendly UI, so this is a fun project to practice."
             />
-            
-            
-
-            {/* <Card 
-                className='section'
-                img='./Capture1.PNG' 
-                title='Our Mission' 
-                description='Our mission is to reduce food waste.'
-            /> */}
             <ContactContainer/>
         </div>
     );

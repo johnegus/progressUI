@@ -1,5 +1,5 @@
 # Progress UI Backend Routes
-//based on previous ecofridge project 
+//based on previous progressui project 
 
 - users
   - GET /users/:id/ => gets a single users info
@@ -9,12 +9,12 @@
   - GET /auth/logout => logs a user out
   - POST /auth/signup => creates a new user and signs them in
   - GET /auth/unauthorized => returns unauthorized JSON when authentication fails
-- groceries
-  - GET /groceries/ => gets all groceries for a user
-  - POST /groceries/new => creates grocery item
-  - GET /groceries/:id => gets a specific grocery item
-  - PUT /groceries/:id => updates a specific grocery item
-  - DELETE /groceries/:id => deletes a grocery item
-- grocery_type
-  - GET /type/groceries/:id => gets the grocery type for a grocery item
-  - GET /type/ => gets all grocery types
+- activities
+  - GET /activities/ => gets all activities for a user
+  - POST /activities/new => creates activity item
+  - GET /activities/:id => gets a specific activity item
+  - PUT /activities/:id => updates a specific activity item
+  - DELETE /activities/:id => deletes a activity item
+- activity_type
+  - GET /type/activities/:id => gets the activity type for a activity item
+  - GET /type/ => gets all activity types
